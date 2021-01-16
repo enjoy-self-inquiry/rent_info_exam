@@ -11,7 +11,7 @@
   <% end %>
 <% end %>
 
-<%= form_with(model: @property, local: true) do |form| %>
+<%= form_with(model: @property, local: true, url: choose_new_or_edit ) do |form| %>
   <div class="property_name">
     <%= form.label :"物件名" %>
     <%= form.text_field :name %>
