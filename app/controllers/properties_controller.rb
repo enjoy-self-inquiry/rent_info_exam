@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update]
+  before_action :set_property, only: [:show, :edit, :update, :destroy]
   def index
     @properties = Property.all
   end
@@ -29,6 +29,11 @@ class PropertiesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @property.destroy
+    redirect_to properties_path, notice: "物件情報を削除しました"
   end
   private
   def property_params
