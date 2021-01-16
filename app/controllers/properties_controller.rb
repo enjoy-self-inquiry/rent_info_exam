@@ -7,9 +7,11 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    Property.create(name: params[:property][:name], price: params[:property][:price],
-                    address: params[:property][:address], age: params[:property][:age],
-                    remarks: params[:property][:remarks])
+    Property.create(property_params)
     redirect_to properties_path
+  end
+  private
+  def property_params
+    params.require(:property).permit(:name, :price, :address, :age, :remarks)
   end
 end
